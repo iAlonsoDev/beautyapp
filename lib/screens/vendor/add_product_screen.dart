@@ -115,7 +115,7 @@ class _AddProductDialogState extends State<AddProductDialog> {
               ),
               const SizedBox(height: 16),
               DropdownButtonFormField<String>(
-                value: _selectedSalonId,
+                initialValue: _selectedSalonId,
                 decoration: const InputDecoration(
                   labelText: 'Selecciona Salón',
                   border: OutlineInputBorder(),
