@@ -25,6 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
     final user = FirebaseAuth.instance.currentUser;
 
     if (user == null) {
+      if (!mounted) return;
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (_) => const LoginScreen()),
@@ -38,6 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
         final role = doc.data()?['role'];
 
+        if (!mounted) return;
         if (role == 'vendedor') {
           Navigator.pushReplacement(
             context,
@@ -50,6 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
           );
         }
       } catch (e) {
+        if (!mounted) return;
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (_) => const LoginScreen()),

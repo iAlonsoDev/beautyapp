@@ -28,12 +28,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
         'role': _selectedRole,
       });
 
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Registro exitoso')),
       );
 
       Navigator.pop(context); // Vuelve al login
     } catch (e) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error: ${e.toString()}')),
       );

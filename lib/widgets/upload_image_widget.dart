@@ -59,7 +59,6 @@ class _UploadImageWidgetState extends State<UploadImageWidget> {
       }
 
       final response = await request.send();
-      print('Código de estado: ${response.statusCode}'); // Para depuración
 
       if (response.statusCode == 200) {
         final resStr = await response.stream.bytesToString();
@@ -78,7 +77,7 @@ class _UploadImageWidgetState extends State<UploadImageWidget> {
         throw Exception('Error al subir la imagen: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error en pickAndUploadImage: $e'); // Para depuración
+      debugPrint('Error en pickAndUploadImage: $e');
       setState(() {
         isUploading = false;
       });

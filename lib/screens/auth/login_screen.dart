@@ -32,6 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     final role = doc.data()?['role'];
 
+    if (!mounted) return;
     if (role == 'vendedor') {
       Navigator.pushReplacement(
         context,
@@ -44,6 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
       );
     }
   } catch (e) {
+    if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Error: ${e.toString()}')),
     );

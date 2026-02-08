@@ -42,12 +42,14 @@ class _AddSalonDialogState extends State<AddSalonDialog> {
         'photos': [],
       });
 
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Salón creado correctamente')),
       );
 
       Navigator.of(context).pop(true); // Cierra el diálogo
     } catch (e) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error: ${e.toString()}')),
       );

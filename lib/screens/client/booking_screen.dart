@@ -68,11 +68,12 @@ class _BookingDialogState extends State<BookingDialog> {
       docRef.hashCode,
     );
 
+    if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Reservación realizada')),
     );
 
-    if (mounted) Navigator.pop(context);
+    Navigator.pop(context);
   }
 
   Future<void> _selectDateTime() async {
@@ -90,7 +91,7 @@ class _BookingDialogState extends State<BookingDialog> {
         );
       },
     );
-    if (date == null) return;
+    if (date == null || !mounted) return;
 
     final time = await showTimePicker(
       context: context,

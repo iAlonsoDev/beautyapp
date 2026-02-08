@@ -44,8 +44,9 @@ class _ClientHomeScreenState extends State<ClientHomeScreen> {
     }
   }
 
-  void _signOut(BuildContext context) async {
+  void _signOut() async {
     await FirebaseAuth.instance.signOut();
+    if (!mounted) return;
     Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(builder: (_) => const LoginScreen()),
@@ -118,7 +119,7 @@ class _ClientHomeScreenState extends State<ClientHomeScreen> {
         ),
         actions: [
           IconButton(
-            onPressed: () => _signOut(context),
+            onPressed: _signOut,
             icon: const Icon(Icons.logout),
             tooltip: 'Cerrar sesión',
           ),
